@@ -47,6 +47,10 @@ server.use(
 );
 server.use(BodyParser.json());
 
+server.get("/", (req, res) => {
+  res.json("Hello");
+})
+
 // Create API
 // CRUD - Create
 server.post("/test", async (req, res) => {
