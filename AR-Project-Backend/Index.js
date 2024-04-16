@@ -15,7 +15,7 @@ main().catch((err) => console.log(err));
 
 async function main() {
   await mongoose.connect(
-    "mongodb+srv://ankitrautela:HareKrishna@2001@cluster0.aodqr8n.mongodb.net/ankitrautela?retryWrites=true&w=majority&appName=Cluster0"
+    DBHOST
   );
   console.log("db connected");
 }
@@ -46,10 +46,6 @@ server.use(
   })
 );
 server.use(BodyParser.json());
-
-server.get("/", (req, res) => {
-  res.json("Hello");
-})
 
 // Create API
 // CRUD - Create
