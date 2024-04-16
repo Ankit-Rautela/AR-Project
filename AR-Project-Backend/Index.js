@@ -1,3 +1,4 @@
+// 6ALX3N2HarXDXKPl
 // Use express
 const express = require("express");
 
@@ -36,7 +37,7 @@ const server = express();
 
 // Start server
 server.listen(8080, () => {
-  console.log("Server Started");
+  console.log("Server ready on port 8080");
 });
 
 // Middleware between client and server to change request
@@ -72,3 +73,6 @@ server.get("/test", async (req, res) => {
 
   res.json(docs);
 });
+
+server.get("/", (req, res) => res.send("Express on Vercel"));
+
