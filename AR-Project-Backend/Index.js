@@ -13,6 +13,8 @@ const mongoose = require("mongoose");
 // Connection to Mongodb
 main().catch((err) => console.log(err));
 
+const PORT = process.env.PORT || 8080;
+
 async function main() {
   await mongoose.connect(
     DBHOST
