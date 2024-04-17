@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
+const port = process.env.PORT || 4000;
 
 app.get("/", (req, res) => res.send("Express on Render"));
 
-app.listen(3000, () => console.log("Server ready on port 3000."));
+app.listen(port, () => console.log("Server ready on port ${port}"));
 
 module.exports = app;
