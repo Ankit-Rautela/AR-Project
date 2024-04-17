@@ -8,18 +8,18 @@ const cors = require("cors");
 // Use body-parser
 const BodyParser = require("body-parser");
 
-// Use mongoose
-const mongoose = require("mongoose");
+// // Use mongoose
+// const mongoose = require("mongoose");
 
-// Connection to Mongodb
-main().catch((err) => console.log(err));
+// // Connection to Mongodb
+// main().catch((err) => console.log(err));
 
-const PORT = process.env.PORT || 8080;
+// const PORT = process.env.PORT || 8080;
 
-async function main() {
-  await mongoose.connect(DBHOST);
-  console.log("db connected");
-}
+// async function main() {
+//   await mongoose.connect(DBHOST);
+//   console.log("db connected");
+// }
 
 // Create Schema
 const userSchema = new mongoose.Schema({
@@ -33,9 +33,17 @@ const User = mongoose.model("User", userSchema);
 // Create server
 const server = express();
 
+require("dotenv").config();
+
+const connectDB = require("./connectMongo");
+
+connectDB();
+
 // Start server
+const PORT = process.env.PORT;
+
 server.listen(PORT, () => {
-  console.log("Server ready on port 8080");
+  console.log("Server is running on port " + PORT);
 });
 
 // Middleware between client and server to change request
@@ -79,3 +87,5 @@ server.get(
 );
 
 module.exports = server;
+
+
