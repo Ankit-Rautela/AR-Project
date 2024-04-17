@@ -17,9 +17,7 @@ main().catch((err) => console.log(err));
 const PORT = process.env.PORT || 8080;
 
 async function main() {
-  await mongoose.connect(
-    DBHOST
-  );
+  await mongoose.connect(DBHOST);
   console.log("db connected");
 }
 
@@ -74,5 +72,8 @@ server.get("/test", async (req, res) => {
   res.json(docs);
 });
 
-server.get("/", (req, res) => res.send("Express on Vercel"));
-
+server.get(
+  "/",
+  (req, res) => res.send("Express on Vercel"),
+  console.log("Express on Vercel")
+);
