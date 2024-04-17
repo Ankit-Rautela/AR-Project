@@ -8,8 +8,8 @@ const cors = require("cors");
 // Use body-parser
 const BodyParser = require("body-parser");
 
-// // Use mongoose
-// const mongoose = require("mongoose");
+// Use mongoose
+const mongoose = require("mongoose");
 
 // // Connection to Mongodb
 // main().catch((err) => console.log(err));
