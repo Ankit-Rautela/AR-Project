@@ -77,3 +77,5 @@ server.get(
   (req, res) => res.send("Express on Vercel"),
   console.log("Express on Vercel")
 );
+
+module.exports = server;
