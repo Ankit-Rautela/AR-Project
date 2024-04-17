@@ -33,7 +33,7 @@ const User = mongoose.model("User", userSchema);
 // Create server
 const server = express();
 
-require("dotenv").config();
+// require("dotenv").config();
 
 const connectDB = require("./connectMongo");
 
