@@ -11,15 +11,15 @@ const BodyParser = require("body-parser");
 // Use mongoose
 const mongoose = require("mongoose");
 
-// // Connection to Mongodb
-// main().catch((err) => console.log(err));
+// Connection to Mongodb
+main().catch((err) => console.log(err));
 
-// const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
-// async function main() {
-//   await mongoose.connect(DBHOST);
-//   console.log("db connected");
-// }
+async function main() {
+  await mongoose.connect(DBHOST);
+  console.log("db connected");
+}
 
 // Create Schema
 const userSchema = new mongoose.Schema({
@@ -35,12 +35,12 @@ const server = express();
 
 // require("dotenv").config();
 
-const connectDB = require("./connectMongo");
+// const connectDB = require("./connectMongo");
 
-connectDB();
+// connectDB();
 
 // Start server
-const PORT = process.env.PORT;
+// const PORT = process.env.PORT;
 
 server.listen(PORT, () => {
   console.log("Server is running on port " + PORT);
@@ -82,8 +82,8 @@ server.get("/test", async (req, res) => {
 
 server.get(
   "/",
-  (req, res) => res.send("Express on Vercel"),
-  console.log("Express on Vercel")
+  (req, res) => res.send("Backend working"),
+  console.log("Backend working")
 );
 
 module.exports = server;
