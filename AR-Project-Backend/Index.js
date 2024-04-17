@@ -34,7 +34,7 @@ const User = mongoose.model("User", userSchema);
 const server = express();
 
 // Start server
-server.listen(8080, () => {
+server.listen(PORT, () => {
   console.log("Server ready on port 8080");
 });
 
