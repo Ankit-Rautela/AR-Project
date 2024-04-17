@@ -12,23 +12,23 @@ const BodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 // Connection to Mongodb
-main().catch((err) => console.log(err));
+// main().catch((err) => console.log(err));
 
 const PORT = process.env.PORT || 8080;
 
-async function main() {
-  await mongoose.connect(DBHOST);
-  console.log("db connected");
-}
+// async function main() {
+//   await mongoose.connect(DBHOST);
+//   console.log("db connected");
+// }
 
 // Create Schema
-const userSchema = new mongoose.Schema({
-  email: String,
-  password: String,
-});
+// const userSchema = new mongoose.Schema({
+//   email: String,
+//   password: String,
+// });
 
 // Create Model
-const User = mongoose.model("User", userSchema);
+// const User = mongoose.model("User", userSchema);
 
 // Create server
 const server = express();
@@ -58,27 +58,27 @@ server.use(BodyParser.json());
 
 // Create API
 // CRUD - Create
-server.post("/test", async (req, res) => {
-  // Store Data
-  //   one time creation
-  let user = new User();
+// server.post("/test", async (req, res) => {
+//   // Store Data
+//   //   one time creation
+//   let user = new User();
 
-  // user.email represent store data going in DB and it's name need to match from backend
-  // req.body.email represent data coming from frontend and it's name need to match from frontend
-  user.email = req.body.email;
-  user.password = req.body.password;
-  const doc = await user.save();
+//   // user.email represent store data going in DB and it's name need to match from backend
+//   // req.body.email represent data coming from frontend and it's name need to match from frontend
+//   user.email = req.body.email;
+//   user.password = req.body.password;
+//   const doc = await user.save();
 
-  console.log(doc);
-  res.json(doc);
-});
+//   console.log(doc);
+//   res.json(doc);
+// });
 
 // CRUD - Read
-server.get("/test", async (req, res) => {
-  const docs = await User.find({});
+// server.get("/test", async (req, res) => {
+//   const docs = await User.find({});
 
-  res.json(docs);
-});
+//   res.json(docs);
+// });
 
 server.get(
   "/",
