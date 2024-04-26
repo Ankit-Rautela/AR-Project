@@ -1,18 +1,31 @@
-import React from "react";
+import React, {useState} from "react";
 import "../App.css";
 import "../index.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Maintenance from "./Maintenance";
 import Signup from "./Signup";
+import HomePage from "./HomePage";
+import BelowFooter from "./BelowFooter";
+import SignupPro from "./SignupPro";
 
 const Home = () => {
+  const [showForm, setShowForm] = useState(false);
+
+  const clickOnSignUp = () => {
+    setShowForm(true);
+    console.log("showForm:", showForm);
+  };
+
   return (
     <>
-      <Navbar />
-      <Maintenance />
-      <Signup />
+      <Navbar onSignUpClick={clickOnSignUp}/>
+      {/* <Maintenance /> */}
+      {/* <HomePage /> */}
+      {/* <Signup showForm={showForm}/> */}
+      <SignupPro showForm={showForm}/>
       <Footer />
+      {/* <BelowFooter /> */}
     </>
   );
 };

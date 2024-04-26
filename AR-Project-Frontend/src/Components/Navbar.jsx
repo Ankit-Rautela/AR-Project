@@ -1,7 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import profilePic from "../assets/profilePic.png";
 
-const Navbar = () => {
+const Navbar = ({ onSignUpClick }) => {
+  const clickOnSignUp = () => {
+    console.log("SignUp button clicked");
+    onSignUpClick();
+  };
+
   return (
     <>
       <div className="grid gap-4 sm:grid-cols-12 fixed top-0 left-0 right-0 bg-white z-10">
@@ -12,13 +17,16 @@ const Navbar = () => {
           <button className="bg-gray-400 text-black px-6 py-3 mx-0 rounded-full hover:bg-black mr-4 hover:text-white hidden sm:block">
             LogIn
           </button>
-          <button className="bg-gray-400 text-black px-6 py-3 mx-0 rounded-full mr-4 hover:bg-black hover:text-white hidden sm:block">
+          <button
+            className="bg-gray-400 text-black px-6 py-3 mx-0 rounded-full mr-4 hover:bg-black hover:text-white hidden sm:block"
+            onClick={clickOnSignUp}
+          >
             SignUp
           </button>
         </div>
       </div>
-      <div className="mt-20">
-      </div>
+
+      {/* <div className="mt-20"></div> */}
     </>
   );
 };
