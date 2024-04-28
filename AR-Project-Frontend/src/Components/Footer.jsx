@@ -14,13 +14,13 @@ const Footer = () => {
             <p>Follow us</p>
           </div>
           <div className="flex justify-center gap-10 my-8">
-            <a href="https://www.linkedin.com/in/ankit-rautela/">
+            <a href="https://www.linkedin.com/in/ankit-rautela/" target="_blank" rel="noopener noreferrer">
               <Linkedin />
             </a>
-            <a href="https://github.com/Ankit-Rautela">
+            <a href="https://github.com/Ankit-Rautela" target="_blank" rel="noopener noreferrer">
               <Github />
             </a>
-            <a href="https://twitter.com/CodeByAnkit">
+            <a href="https://twitter.com/CodeByAnkit" target="_blank" rel="noopener noreferrer">
               <Twitter />
             </a>
           </div>

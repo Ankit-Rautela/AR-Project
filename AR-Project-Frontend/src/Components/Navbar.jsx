@@ -3,7 +3,7 @@ import profilePic from "../assets/profilePic.png";
 
 const Navbar = ({ onSignUpClick }) => {
   const clickOnSignUp = () => {
-    console.log("SignUp button clicked");
+    console.log("Signup button clicked");
     onSignUpClick();
   };
 
