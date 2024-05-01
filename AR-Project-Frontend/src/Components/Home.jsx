@@ -8,6 +8,8 @@ import Signup from "./Signup";
 import HomePage from "./HomePage";
 import BelowFooter from "./BelowFooter";
 import SignupPro from "./SignupPro";
+import ProfileBanner from "./ProfileBanner";
+
 
 const Home = () => {
   const [showForm, setShowForm] = useState(false);
@@ -20,6 +22,7 @@ const Home = () => {
   return (
     <>
       <Navbar onSignUpClick={clickOnSignUp}/>
+      <ProfileBanner />
       {/* <Maintenance /> */}
       {/* <HomePage /> */}
       {/* <Signup showForm={showForm}/> */}
