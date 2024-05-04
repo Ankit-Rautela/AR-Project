@@ -4,7 +4,7 @@ import { User } from "lucide-react";
 
 const Navbar = ({ onRegisterClick }) => {
   const clickOnRegister = () => {
-    console.log("Register Icon Clicked");
+    console.log("Register Button Clicked");
     onRegisterClick();
   };
 
