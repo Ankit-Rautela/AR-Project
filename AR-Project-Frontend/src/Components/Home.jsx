@@ -14,21 +14,21 @@ import ProfileBanner from "./ProfileBanner";
 const Home = () => {
   const [showForm, setShowForm] = useState(false);
 
-  const clickOnSignUp = () => {
+  const clickOnRegister = () => {
     setShowForm(true);
     console.log("showForm:", showForm);
   };
 
   return (
     <>
-      <Navbar onSignUpClick={clickOnSignUp}/>
+      <Navbar onRegisterClick={clickOnRegister}/>
       <ProfileBanner />
       {/* <Maintenance /> */}
       {/* <HomePage /> */}
       {/* <Signup showForm={showForm}/> */}
       <SignupPro showForm={showForm}/>
       <Footer />
-      {/* <BelowFooter /> */}
+      <BelowFooter />
     </>
   );
 };
