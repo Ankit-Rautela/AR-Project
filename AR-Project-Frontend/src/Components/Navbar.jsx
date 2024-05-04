@@ -10,7 +10,7 @@ const Navbar = ({ onSignUpClick }) => {
 
   return (
     <>
-      <div className="grid gap-4 min-h-[100px] sm:grid-cols-12 sticky top-0 bg-white z-10  /*border-2 border-black*/">
+      <div className="grid gap-4 min-h-[100px] sm:grid-cols-12 sm:sticky top-0 bg-white z-10 /*border-2 border-black*/">
         <div className="min-h-[100px] border-2 border-white rounded sm:col-span-2">
           <img className="w-20 h-20 mx-auto my-4" src={profilePic} alt="logo" />
         </div>
