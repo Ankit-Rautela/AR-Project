@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Signup from "./Signup";
 import BelowFooter from "./BelowFooter";
 import ProfileBanner from "./ProfileBanner";
+import Intro from "./Intro";
 
 const Home = () => {
   const [showForm, setShowForm] = useState(false);
@@ -27,6 +28,7 @@ const Home = () => {
           }}
         />
       )}
+      <Intro />
       <Footer />
       <BelowFooter />
     </>

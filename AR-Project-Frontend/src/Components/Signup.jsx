@@ -9,11 +9,39 @@ const Signup = ({ onClose }) => {
 
   const handleForm = (e) => {
     console.log(e.target.name, e.target.value);
+    const { name, value } = e.target;
+    if (name === "email") setEmail(value);
+    else if (name === "password") setPassword(value);
   };
 
   const closeRegister = (e) => {
     if (modalRef.current === e.target) {
       onClose();
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      if (response.ok) {
+        // Handle success, such as showing a success message
+        alert("Signup successful!");
+        onClose(); // Close the modal after successful signup
+      } else {
+        // Handle error response from the server
+        alert("Signup failed. Please try again later.");
+      }
+    } catch (error) {
+      // Handle network error
+      console.error("Error during signup:", error);
+      alert("Signup failed. Please check your network connection.");
     }
   };
 
@@ -29,7 +57,7 @@ const Signup = ({ onClose }) => {
             <X size={30} />
           </button>
           <div className="bg-white rounded-xl px-20 py-10 flex flex-col gap-5 items-center mx-4">
-            <form className="space-y-6" action="#">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <h5 className="text-xl font-medium text-gray-900 dark:text-white">
                 Sign up
               </h5>
