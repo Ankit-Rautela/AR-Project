@@ -3,7 +3,7 @@ import Frontlogo from "../assets/FrontLogo.png";
 const ProfileBanner = () => {
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white my-10">
         <div className="min-h-[100px] border-2 border-white rounded mx-auto pl-12 my-auto ml-15 mr-2 mt-10 font-extrabold text-8xl">
           <h1>Hi, I'm <span className="text-gray-500">Ankit</span></h1>
           <div className="text-xl mt-6 ml-2 pt-2">
