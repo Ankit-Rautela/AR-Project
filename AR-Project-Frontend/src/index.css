@@ -16,3 +16,18 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   background-color: transparent; /* Set the background color of the thumb to transparent */
 }
+
+/* Cursor.css */
+
+.cursor {
+  width: 30px; /* Increase the size */
+  height: 30px; /* Increase the size */
+  border-radius: 50%;
+  border: 2px solid gray; /*Show only the outline*/
+  position: fixed;
+  pointer-events: none; /*Allow click through*/
+  z-index: 9999; /*Ensure it's on top of other elements*/
+  transition: all 0.2s ease; /* Add transition for smoothness*/
+}
+
+

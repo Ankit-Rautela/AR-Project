@@ -7,6 +7,7 @@ import Signup from "./Signup";
 import BelowFooter from "./BelowFooter";
 import ProfileBanner from "./ProfileBanner";
 import Intro from "./Intro";
+import Cursor from "./Cursor";
 
 const Home = () => {
   const [showForm, setShowForm] = useState(false);
@@ -31,6 +32,7 @@ const Home = () => {
       <Intro />
       <Footer />
       <BelowFooter />
+      <Cursor />
     </>
   );
 };
