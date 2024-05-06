@@ -27,12 +27,16 @@ const Signup = ({ onClose }) => {
         // Handle success, such as showing a success message
         alert("Signup successful!");
         onClose(); // Close the modal after successful signup
+      } else if (response.status === 400) {
+        // Handle bad request (client error)
+        const data = await response.json(); // Parse response body as JSON
+        alert(`Signup failed: ${data.error}`); // Display specific error message from server
       } else {
-        // Handle error response from the server
+        // Handle other error responses from the server
         alert("Signup failed. Please try again later.");
       }
     } catch (error) {
-      // Handle network error
+      // Handle network error or other unexpected errors
       console.error("Error during signup:", error);
       alert("Signup failed. Please check your network connection.");
     }
@@ -62,7 +66,9 @@ const Signup = ({ onClose }) => {
                   Your email
                 </label>
                 <input
-                  onChange={(e)=>{setEmail(e.target.value)}}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                   type="email"
                   name="email"
                   id="email"
@@ -79,7 +85,9 @@ const Signup = ({ onClose }) => {
                   Your password
                 </label>
                 <input
-                  onChange={(e)=>{setPassword(e.target.value)}}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                   type="password"
                   name="password"
                   id="password"
@@ -88,7 +96,7 @@ const Signup = ({ onClose }) => {
                   required
                 />
               </div>
-                        
+
               <button
                 type="submit"
                 onClick={handleSubmit}

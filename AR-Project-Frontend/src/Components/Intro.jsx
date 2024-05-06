@@ -9,7 +9,7 @@ const Intro = () => {
       <div className="flex justify-center my-8">
         <p className="font-extrabold text-6xl">Overview.</p>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center font-sans">
         <p className="mx-64 my-20 font-normal">
           I'm a skilled web developer with proficiency in HTML, CSS, and
           JavaScript. Experience with front-end framework React and have ability

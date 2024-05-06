@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+*{
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
 /* Hide scrollbar, but allow scrolling */
 body {
   overflow-y: scroll; /* Ensure vertical scrollbar is always visible */
@@ -27,7 +36,13 @@ body::-webkit-scrollbar-thumb {
   position: fixed;
   pointer-events: none; /*Allow click through*/
   z-index: 9999; /*Ensure it's on top of other elements*/
-  transition: all 0.2s ease; /* Add transition for smoothness*/
+  transition: all 0.3s ease; /* Add transition for smoothness*/
+  transform-origin: center center; /* Set transform origin to center */
 }
+
+.cursor.visible {
+  opacity: 1; /* Show cursor when visible */
+}
+
 
 
