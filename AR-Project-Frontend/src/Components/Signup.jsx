@@ -7,13 +7,6 @@ const Signup = ({ onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleForm = (e) => {
-    console.log(e.target.name, e.target.value);
-    const { name, value } = e.target;
-    if (name === "email") setEmail(value);
-    else if (name === "password") setPassword(value);
-  };
-
   const closeRegister = (e) => {
     if (modalRef.current === e.target) {
       onClose();
@@ -50,13 +43,13 @@ const Signup = ({ onClose }) => {
       <div
         ref={modalRef}
         onClick={closeRegister}
-        className="fixed inset-0 bg-black bg-opacity-30 backdrop-filter backdrop-blur-sm flex justify-center items-center h-screen"
+        className="fixed inset-0 flex items-center justify-center h-screen bg-black bg-opacity-30 backdrop-filter backdrop-blur-sm"
       >
-        <div className="mt-10 flex flex-col gap-5 text-white">
-          <button onClick={onClose} className="place-self-end mr-4">
+        <div className="flex flex-col gap-5 mt-10 text-white">
+          <button onClick={onClose} className="mr-4 place-self-end">
             <X size={30} />
           </button>
-          <div className="bg-white rounded-xl px-20 py-10 flex flex-col gap-5 items-center mx-4">
+          <div className="flex flex-col items-center gap-5 px-20 py-10 mx-4 bg-white rounded-xl">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <h5 className="text-xl font-medium text-gray-900 dark:text-white">
                 Sign up
@@ -69,7 +62,7 @@ const Signup = ({ onClose }) => {
                   Your email
                 </label>
                 <input
-                  onChange={handleForm}
+                  onChange={(e)=>{setEmail(e.target.value)}}
                   type="email"
                   name="email"
                   id="email"
@@ -86,7 +79,7 @@ const Signup = ({ onClose }) => {
                   Your password
                 </label>
                 <input
-                  onChange={handleForm}
+                  onChange={(e)=>{setPassword(e.target.value)}}
                   type="password"
                   name="password"
                   id="password"
@@ -95,9 +88,10 @@ const Signup = ({ onClose }) => {
                   required
                 />
               </div>
-
+                        
               <button
                 type="submit"
+                onClick={handleSubmit}
                 className="w-full text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Sign up
