@@ -1,12 +1,11 @@
 import { useState } from "react";
 import profilePic from "../assets/profilePic.png";
 import { User } from "lucide-react";
+import Signup from "./Signup";
 
-const Navbar = ({ onRegisterClick }) => {
-  const clickOnRegister = () => {
-    console.log("Register Button Clicked");
-    onRegisterClick();
-  };
+const Navbar = () => {
+  const [showLogin, setShowLogin] = useState(false);
+
 
   return (
     <>
@@ -19,7 +18,10 @@ const Navbar = ({ onRegisterClick }) => {
             <p>Register</p>
           </div>
           <div className="mr-4 cursor-pointer">
-            <User onClick={clickOnRegister} />
+            <button onClick={() => setShowLogin(true)}>
+            <User />
+            </button>
+            {showLogin && <Signup onClose={() => setShowLogin(false)} />}
           </div>
         </div>
       </div>
