@@ -17,7 +17,7 @@ const Signup = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let response = await fetch('http://localhost:8000', {
+    let response = await fetch('/api/users', {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {
