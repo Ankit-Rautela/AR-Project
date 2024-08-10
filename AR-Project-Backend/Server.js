@@ -16,9 +16,13 @@ const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server started running on port ${PORT}`));
 
 app.post('/', async (req, res) => {
-    let user = new Users(req.body);
-    let result = await user.save();
-    res.send(result);
+    try {
+        let user = new Users(req.body);
+        let result = await user.save();
+        res.send(result);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
 });
 
 module.exports = app;
