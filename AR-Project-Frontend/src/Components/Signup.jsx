@@ -18,12 +18,13 @@ const Signup = ({ onClose }) => {
     e.preventDefault();
 
     let response = await fetch('https://ar-project.onrender.com/users', {
-      method: "post",
+      method: "POST",
       body: JSON.stringify({ email, password }),
       headers: {
         "Content-Type": "application/json",
       },
     });
+    
     response = await response.json;
     localStorage.setItem("user", JSON.stringify(response));
     onClose();
