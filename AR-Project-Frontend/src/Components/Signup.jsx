@@ -17,7 +17,7 @@ const Signup = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let response = await fetch('https://ar-project.onrender.com/api/users', {
+    let response = await fetch('https://ar-project.onrender.com/users', {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {
