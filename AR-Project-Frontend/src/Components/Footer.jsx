@@ -1,6 +1,6 @@
 import React from "react";
 import { Search, Linkedin, Github, Twitter } from "lucide-react";
-import profilePic from "../assets/profilePic.png";
+import profilePic from "../assets/profile-pic.png";
 const Footer = () => {
   return (
     <>

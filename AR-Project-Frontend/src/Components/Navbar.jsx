@@ -1,5 +1,5 @@
 import { useState } from "react";
-import profilePic from "../assets/profilePic.png";
+import profilePic from "../assets/profile-pic.png";
 import { User } from "lucide-react";
 import Signup from "./Signup";
 
