@@ -9,12 +9,13 @@ import ProfileBanner from "./ProfileBanner";
 import Intro from "./Intro";
 import Cursor from "./Cursor";
 
+import Login from "./Login";
+
 const Home = () => {
   const [showForm, setShowForm] = useState(false);
 
   const clickOnRegister = () => {
     setShowForm(true);
-    // console.log(showForm);
   };
 
   return (
@@ -25,7 +26,13 @@ const Home = () => {
         <Signup
           onClose={() => {
             setShowForm(false);
-            // console.log(showForm);
+          }}
+        />
+      )}
+      {showForm && (
+        <Login
+          onClose={() => {
+            setShowForm(false);
           }}
         />
       )}

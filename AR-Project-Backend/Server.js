@@ -2,12 +2,15 @@ require('dotenv').config();
 
 const express = require("express");
 const cors = require("cors");
+const bcrypt = require("bcrypt");
+
 const connectDB = require("./utils/db");
 const User = require("./models/userModel");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
 
 // Connect to the database
 connectDB();
@@ -18,54 +21,153 @@ const PORT = process.env.PORT || 4000;
 // Start the server
 app.listen(PORT, () => console.log(`Server started running on port ${PORT}`));
 
-// Define a basic GET route to check if the server is running
+// Base API route
 app.get('/', (req, res) => {
-    console.log("API was hit!");
     res.send("Hello, the API is working!");
 });
 
-// Route to display users in HTML format
+// Get all users (excluding passwords)
 app.get('/users', async (req, res) => {
     try {
-        console.log("Fetching users...");
-        const users = await User.find().select('-password'); // Exclude passwords from the response
-        console.log("Users fetched:", users);
-
-        let html = `<h1>Users List</h1><ul>`;
-        users.forEach(user => {
-            html += `<li>Email: ${user.email}</li>`;
-        });
-        html += `</ul>`;
-
-        res.send(html);
+        const users = await User.find().select('-password');
+        res.json(users);
     } catch (error) {
-        console.error("Error fetching users:", error.stack || error.message);
-        res.status(500).send("An error occurred while fetching users.");
+        console.error("Error fetching users:", error);
+        res.status(500).json({ message: "An error occurred while fetching users." });
     }
 });
 
-// Route to create a new user
+// Create a new user
 app.post('/users', async (req, res) => {
-    try {
-        const { email, password } = req.body;
-        if (!email || !password) {
-            return res.status(400).send("Email and password are required.");
-        }
+    let { email, password } = req.body;
 
-        // Check for existing user
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(400).send("User already exists.");
-        }
+    email = email.trim();
+    password = password.trim();
 
-        const user = new User(req.body);
-        const result = await user.save();
+    if (email == "" || password == "") {
+        res.json({
+            status: "FAILED",
+            message: "Empty input fields!"
+        });
+    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+        res.json({
+            status: "FAILED",
+            message: "Invalid email entered"
+        })
+    } else if (password.length < 8) {
+        res.json({
+            status: "FAILED",
+            message: "Password is too short!"
+        })
+    } else {
+        // check if user already exists
+        User.find({ email }).then(result => {
+            if (result.length) {
+                // A user alreay exists
+                res.json({
+                    status: "FAILED",
+                    message: "User with the provided email already exists"
+                })
+            } else {
+                // try to create new user
 
-        res.status(201).send(result);
-    } catch (error) {
-        console.error("Error creating user:", error.stack || error.message);
-        res.status(500).send("An error occurred while creating the user.");
+                // Password handling
+                const saltRounds = 10;
+                bcrypt.hash(password, saltRounds).then(hasedPassword => {
+                    const newUser = new User({
+                        email,
+                        password: hasedPassword
+                    });
+
+                    newUser.save().then(result => {
+                        res.json({
+                            status: "SUCCESS",
+                            message: "Signup successful",
+                            data: result,
+                        })
+                    })
+                        .catch(err => {
+                            res.json({
+                                status: "FAILED",
+                                message: "An error occured while saving user account!"
+                            })
+                        })
+
+                })
+                .catch(err => {
+                    res.json({
+                        status: "FAILED",
+                        message: "An error occured while hashing password! "
+                    })
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.json({
+                status: "FAILED",
+                message: "An error occured while checking for existing user!"
+            })
+        })      
     }
 });
+
+app.post('/login', async (req, res) => {
+    let { email, password } = req.body;
+
+    email = email.trim();
+    password = password.trim();
+
+    if (email == "" || password == "") {
+        res.json({
+            status: "FAILED",
+            message: "Empty input Supplied!"
+        });
+    } else {
+        // check if user exist
+        User.find({email})
+        .then(data => {
+            if(data.length) {
+                // User exists
+
+                const hasedPassword = data[0].password;
+
+                bcrypt.compare(password,hasedPassword).then(result => {
+                    if(result){
+                        // Password match
+                        res.json({
+                            status: "SUCCESS",
+                            message: "Login successful",
+                            data: data
+                        });
+                    }else {
+                        res.json({
+                            status: "FAILED",
+                            message: "Invalid password entered!"
+                        });
+                    }
+                })
+                .catch(err => {
+                    res.json({
+                    status: "FAILED",
+                    message: "An error occuered while comparing passwords"
+                });
+
+            })
+        } else {
+            res.json({
+                status: "FAILED",
+                message: "Invalid credentials entered!"
+            })
+        }
+    })
+    .catch(err => {
+        res.json({
+        status: "FAILED",
+        message: "An error occuered while checking for user"
+    })
+    })
+}
+})
 
 module.exports = app;
