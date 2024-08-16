@@ -105,3 +105,5 @@ const Login = ({ onClose }) => {
 };
 
 export default Login;
+
+console.log("Check");
