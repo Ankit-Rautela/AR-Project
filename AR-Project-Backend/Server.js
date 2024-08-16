@@ -87,6 +87,7 @@ app.post('/users', async (req, res) => {
                         })
                     })
                         .catch(err => {
+                            console.log(err);
                             res.json({
                                 status: "FAILED",
                                 message: "An error occured while saving user account!"
@@ -95,6 +96,7 @@ app.post('/users', async (req, res) => {
 
                 })
                 .catch(err => {
+                    console.log(err);
                     res.json({
                         status: "FAILED",
                         message: "An error occured while hashing password! "
@@ -121,7 +123,7 @@ app.post('/login', async (req, res) => {
     if (email == "" || password == "") {
         res.json({
             status: "FAILED",
-            message: "Empty input Supplied!"
+            message: "Empty credentials Supplied!"
         });
     } else {
         // check if user exist
@@ -148,6 +150,7 @@ app.post('/login', async (req, res) => {
                     }
                 })
                 .catch(err => {
+                    console.log(err);
                     res.json({
                     status: "FAILED",
                     message: "An error occuered while comparing passwords"
@@ -162,6 +165,7 @@ app.post('/login', async (req, res) => {
         }
     })
     .catch(err => {
+        console.log(err);
         res.json({
         status: "FAILED",
         message: "An error occuered while checking for user"
