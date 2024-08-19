@@ -16,7 +16,7 @@ const Signup = ({ onClose }) => {
     e.preventDefault();
 
     try {
-      let response = await fetch('https://ar-project.onrender.com/users', {
+      let response = await fetch('https://ar-project-1.onrender.com/users', {
         method: "POST",
         body: JSON.stringify({ email, password }),
         headers: {
