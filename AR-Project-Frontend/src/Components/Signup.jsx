@@ -15,6 +15,12 @@ const Signup = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Frontend validation for password length
+    if (password.length < 8) {
+      alert('Password must be at least 8 characters long.');
+      return;
+    }
+
     try {
       let response = await fetch('https://ar-project-1.onrender.com/users', {
         method: "POST",
@@ -25,9 +31,23 @@ const Signup = ({ onClose }) => {
       });
 
       const data = await response.json();
-      localStorage.setItem("user", JSON.stringify(data));
-      onClose();
-      alert('Signup successful!');
+
+      // Handling email uniqueness error from the backend
+      if (response.status === 200) {
+        alert('HEllo');
+        return;
+      }
+      if (response.status === 'FAILED') {
+        alert('Email already exists. Please use a different email.');
+        return;
+      }
+      if (response.ok) {
+        localStorage.setItem("user", JSON.stringify(data));
+        onClose();
+        alert('Signup successful!');
+      } else {
+        alert('Signup failed. Please try again.');
+      }
     } catch (error) {
       console.error('Error during signup:', error);
       alert('Something went wrong, please try again.');

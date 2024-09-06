@@ -41,78 +41,69 @@ app.get('/users', async (req, res) => {
 app.post('/users', async (req, res) => {
     let { email, password } = req.body;
 
-    email = email.trim();
+    email = email.trim().toLowerCase();
     password = password.trim();
 
-    if (email == "" || password == "") {
-        res.json({
+    console.log("Received email:", email);
+
+    if (email === "" || password === "") {
+        console.log("Empty input fields.");
+        return res.status(400).json({
             status: "FAILED",
             message: "Empty input fields!"
         });
     } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-        res.json({
+        return res.status(400).json({
             status: "FAILED",
             message: "Invalid email entered"
-        })
+        });
     } else if (password.length < 8) {
-        res.json({
+        return res.status(400).json({
             status: "FAILED",
             message: "Password is too short!"
-        })
-    } else {
-        // check if user already exists
-        User.find({ email }).then(result => {
-            if (result.length) {
-                // A user alreay exists
-                res.json({
-                    status: "FAILED",
-                    message: "User with the provided email already exists"
-                })
-            } else {
-                // try to create new user
+        });
+    }
 
-                // Password handling
-                const saltRounds = 10;
-                bcrypt.hash(password, saltRounds).then(hasedPassword => {
-                    const newUser = new User({
-                        email,
-                        password: hasedPassword
-                    });
+    try {
+        console.log("Checking if email already exists:", email);
 
-                    newUser.save().then(result => {
-                        res.json({
-                            status: "SUCCESS",
-                            message: "Signup successful",
-                            data: result,
-                        })
-                    })
-                        .catch(err => {
-                            console.log(err);
-                            res.json({
-                                status: "FAILED",
-                                message: "An error occured while saving user account!"
-                            })
-                        })
+        const existingUser = await User.findOne({ email });
 
-                })
-                .catch(err => {
-                    console.log(err);
-                    res.json({
-                        status: "FAILED",
-                        message: "An error occured while hashing password! "
-                    })
-                })
-            }
-        })
-        .catch(err => {
-            console.log(err);
-            res.json({
+        if (existingUser) {
+            console.log("User already exists:", existingUser.email);
+            return res.status(409).json({
                 status: "FAILED",
-                message: "An error occured while checking for existing user!"
-            })
-        })      
+                message: "User with the provided email already exists"
+            });
+        }
+
+        // If no existing user, proceed to create a new one
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        const newUser = new User({
+            email,
+            password: hashedPassword
+        });
+
+        const result = await newUser.save();
+        console.log("User created successfully:", result);
+        return res.status(201).json({
+            status: "SUCCESS",
+            message: "Signup successful",
+            data: result,
+        });
+
+    } catch (err) {
+        console.error("Error during user creation:", err);
+        return res.status(500).json({
+            status: "FAILED",
+            message: "An error occurred while saving user account!"
+        });
     }
 });
+
+
 
 app.post('/login', async (req, res) => {
     let { email, password } = req.body;
