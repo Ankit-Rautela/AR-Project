@@ -1,41 +1,30 @@
-import React, { useState } from "react";
 import "../App.css";
 import "../index.css";
+import { useState } from "react";
+
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Signup from "./Signup";
 import BelowFooter from "./BelowFooter";
 import ProfileBanner from "./ProfileBanner";
 import Intro from "./Intro";
 import Cursor from "./Cursor";
-
-import Login from "./Login";
+import RegistrationPopUp from "./RegistrationPopUp";
 
 const Home = () => {
-  const [showForm, setShowForm] = useState(false);
+
+  const [showSuggestion, setShowSuggestion] = useState(false);
 
   const clickOnRegister = () => {
-    setShowForm(true);
+    setShowSuggestion(true);
   };
 
   return (
     <>
       <Navbar onRegisterClick={clickOnRegister} />
       <ProfileBanner />
-      {showForm && (
-        <Signup
-          onClose={() => {
-            setShowForm(false);
-          }}
-        />
-      )}
-      {showForm && (
-        <Login
-          onClose={() => {
-            setShowForm(false);
-          }}
-        />
-      )}
+      {showSuggestion && (<RegistrationPopUp onClose={() => {
+        setShowForm(false);
+      }} />)}
       <Intro />
       <Footer />
       <BelowFooter />
