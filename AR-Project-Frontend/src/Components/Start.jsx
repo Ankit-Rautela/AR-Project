@@ -2,7 +2,7 @@ import React from "react";
 import StartButton from "./StartButton";
 
 
-const LandingPage = () => {
+const Start = () => {
   return (
     <>
       <div >
@@ -12,4 +12,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default Start;
