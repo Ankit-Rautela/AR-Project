@@ -1,18 +1,23 @@
 import './App.css'
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
-import Start from "./Components/Start";
-import Home from "./Components/Home";
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import Services from './pages/Services';
-import EmailVerification from './pages/EmailVerification';
+
 import { Toaster } from 'react-hot-toast'
 import { useAuthstore } from './store/authStore';
 import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import LoadingSpinner from './Components/LoadingSpinner';
-import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword';
+
+
+const Start = lazy(() => import("./Components/Start"));
+const Home = lazy(() => import("./Components/Home"));
+const Signup = lazy(() => import('./pages/Signup'));
+const Login = lazy(() => import('./pages/Login'));
+const Services = lazy(() => import('./pages/Services'));
+const EmailVerification = lazy(() => import('./pages/EmailVerification'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const ResetPassword = lazy(() => import('./pages/ResetPassword'));
+
 
 
 const ProtectedRoute = ({ children }) => {
@@ -49,26 +54,21 @@ function App() {
   if(isCheckingAuth) return <LoadingSpinner />;  
   return (
     <>
+    <Suspense fallback={<LoadingSpinner />}>
       <Routes>
-      <Route path="/services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
+        <Route path="/services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
         <Route path="/" element={<Start />} />
         <Route path="/Home" element={<Home />} />
-        <Route path="/signup" element={<RedirectAuthenticatedUser>
-          <Signup />
+        <Route path="/signup" element={<RedirectAuthenticatedUser><Signup /></RedirectAuthenticatedUser>} />
+        <Route path="/login" element={<RedirectAuthenticatedUser><Login />
         </RedirectAuthenticatedUser>} />
-        <Route path="/login" element={<RedirectAuthenticatedUser>
-          <Login />
-        </RedirectAuthenticatedUser>} />
-        <Route path="/forgot-password" element={<RedirectAuthenticatedUser>
-          <ForgotPassword />
-        </RedirectAuthenticatedUser>} />
-        <Route path="/reset-password/:token" element={<RedirectAuthenticatedUser>
-          <ResetPassword />
-        </RedirectAuthenticatedUser>} />
+        <Route path="/forgot-password" element={<RedirectAuthenticatedUser><ForgotPassword /></RedirectAuthenticatedUser>} />
+        <Route path="/reset-password/:token" element={<RedirectAuthenticatedUser><ResetPassword /></RedirectAuthenticatedUser>} />
         <Route path="/verify-email" element={<EmailVerification />} />
       </Routes>
-      <Toaster />
-    </>
+    </Suspense>
+    <Toaster />
+  </>
   );
 }
 
