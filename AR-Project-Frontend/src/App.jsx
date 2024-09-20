@@ -1,5 +1,5 @@
 import './App.css'
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from "react-router-dom";
 
 import { Toaster } from 'react-hot-toast'
