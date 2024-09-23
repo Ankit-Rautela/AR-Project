@@ -60,7 +60,7 @@ const EmailVerification = () => {
 
     return (
         <>
-            <div className="fixed inset-0 flex items-center justify-center h-screen bg-black bg-opacity-30 backdrop-filter backdrop-blur-sm">
+            <div className="fixed inset-0 flex items-center justify-center h-screen bg-(rgb(233, 229, 218)) bg-opacity-30 backdrop-filter backdrop-blur-sm">
                 <div className="flex flex-col items-center gap-5 px-20 py-10 mx-4 bg-white rounded-xl">
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         <h5 className="text-xl font-bold mb-6 text-center text-gray-900 dark:text-white">

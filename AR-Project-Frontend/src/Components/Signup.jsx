@@ -59,7 +59,7 @@ const Signup = ({ onClose }) => {
       <div
         ref={modalRef}
         onClick={closeForm}
-        className="fixed inset-0 flex items-center justify-center h-screen bg-black bg-opacity-30 backdrop-filter backdrop-blur-sm"
+        className="fixed inset-0 flex items-center justify-center h-screen bg-(rgb(233, 229, 218)) bg-opacity-30 backdrop-filter backdrop-blur-sm"
       >
         <div className="flex flex-col gap-5 mt-10 text-white">
           <button onClick={onClose} className="mr-4 place-self-end">

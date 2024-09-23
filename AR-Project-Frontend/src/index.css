@@ -15,6 +15,7 @@
 /* Hide scrollbar, but allow scrolling */
 body {
   overflow-y: scroll; /* Ensure vertical scrollbar is always visible */
+  background: rgb(233, 229, 218);
 }
 
 /* For WebKit (Chrome, Safari, Opera) */
@@ -33,16 +34,17 @@ body::-webkit-scrollbar-thumb {
   width: 30px; /* Increase the size */
   height: 30px; /* Increase the size */
   border-radius: 50%;
-  border: 2px solid gray; /*Show only the outline*/
+  border: 1px solid gray; /*Show only the outline*/
   position: fixed;
   pointer-events: none; /*Allow click through*/
   z-index: 9999; /*Ensure it's on top of other elements*/
-  transition: all 0.3s ease; /* Add transition for smoothness*/
+  opacity: 0;
+  transition: all 0.3s ease;; /* Add transition for smoothness*/
   transform-origin: center center; /* Set transform origin to center */
 }
 
 .cursor.visible {
-  opacity: 1; /* Show cursor when visible */
+  opacity: 4; /* Show cursor when visible */
 }
 
 

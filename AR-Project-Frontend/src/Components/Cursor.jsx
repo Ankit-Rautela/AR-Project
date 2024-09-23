@@ -1,42 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import "../index.css";
-
-// Import the click sound file
 import clickSound from '../assets/sound-3.mp3';
 
-
 const Cursor = () => {
-  // State to track cursor position
-  const [position, setPosition] = useState({ x: -100, y: -100 }); // Set initial position off-screen
-  const [visible, setVisible] = useState(false); // State to track cursor visibility - Not working right-now
-  const [audio] = useState(new Audio(clickSound)); // Create an Audio object for the click sound
+  const [position, setPosition] = useState({ x: -100, y: -100 });
+  const [visible, setVisible] = useState(false);
+  const [audio] = useState(new Audio(clickSound));
+  let timeoutId; // Declare a variable to hold the timeout ID
 
   useEffect(() => {
-    // Update cursor position and make it visible when the mouse moves
     const updatePosition = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
-      setVisible(true); 
+      setVisible(true);
+
+      // Clear the previous timeout and set a new one
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setVisible(false); // Make cursor invisible after 3 seconds
+      }, 1000);
     };
 
-    // Hide cursor when the mouse leaves the window - Not working right-now
     const handleMouseLeave = () => {
-      setVisible(false); // Set cursor invisible when leaving the website
+      clearTimeout(timeoutId); // Clear timeout on mouse leave
+      setVisible(false);
     };
 
-    // Play click sound when the mouse is clicked
     const handleClick = () => {
-      audio.play(); // Play the click sound
+      audio.play();
     };
 
-    // Add event listeners
-    document.addEventListener('mousemove', updatePosition);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('click', handleClick);
+    window.addEventListener('mousemove', updatePosition);
+    window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('click', handleClick);
 
     return () => {
-      document.removeEventListener('mousemove', updatePosition);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      document.removeEventListener('click', handleClick);
+      clearTimeout(timeoutId); // Clear timeout on component unmount
+      window.removeEventListener('mousemove', updatePosition);
+      window.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('click', handleClick);
     };
   }, [audio]);
 
