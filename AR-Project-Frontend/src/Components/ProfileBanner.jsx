@@ -26,8 +26,8 @@ const ProfileBanner = () => {
             </a>
           </div>
         </div>
-        <div className="min-h-[100px]  rounded flex justify-center items-center">
-          <img className="w-80 h-80" src={Frontlogo} alt="logo" />
+        <div className="min-h-[100px]  rounded flex justify-center items-center -z-50">
+          <img className="w-80 h-80 spin-slow" src={Frontlogo} alt="logo" />
         </div>
 
       </div>

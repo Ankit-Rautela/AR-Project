@@ -47,5 +47,18 @@ body::-webkit-scrollbar-thumb {
   opacity: 4; /* Show cursor when visible */
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-slow {
+  animation: spin 90s linear infinite;
+}
+
 
 
