@@ -18,7 +18,7 @@ const allowedOrigins = process.env.NODE_ENV === 'production'
 
 app.use(cors({
   origin: allowedOrigins,
-  credentials: true, // Allow cookies/auth headers
+  credentials: true, 
 }));
 
 app.use(express.json());

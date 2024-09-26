@@ -31,7 +31,7 @@ const Navbar = () => {
                 <p>Resume:)</p>
               </div>
               <div className="mr-10 cursor-pointer">
-                <button onClick={() => window.open('https://drive.google.com/file/d/15Xr57bq7IkZHquHPD4fJpEhDE569nIt9/view?usp=sharing', '_blank')}>
+                <button onClick={() => window.open('https://drive.google.com/file/d/1tGyYEkU6YPLTJNGXXHdy5-CZMgk3Wy6f/view?usp=sharing', '_blank')}>
                   <File className="ml-10" />
                 </button>
               </div>
