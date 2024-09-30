@@ -5,6 +5,7 @@ import cors from 'cors'
 
 import { connectDB } from './db/connectDB.js'
 import authRoutes from './routes/auth.route.js'
+import blogRoutes from './routes/blog.route.js'
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/auth",authRoutes);
+app.use("/api/blog",blogRoutes);
 
 app.listen(PORT, () => {
     connectDB();
