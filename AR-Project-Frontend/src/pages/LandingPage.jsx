@@ -1,5 +1,5 @@
 import React from "react";
-import StartButton from "./StartButton";
+import StartButton from "../Components/StartButton";
 
 
 const LandingPage = () => {

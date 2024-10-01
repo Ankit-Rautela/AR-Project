@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import BelowFooter from "./BelowFooter";
 import ProfileBanner from "./ProfileBanner";
-import Intro from "./Intro";
+import Intro from "../pages/Intro";
 import Cursor from "./Cursor";
 import RegistrationPopUp from "./RegistrationPopUp";
 

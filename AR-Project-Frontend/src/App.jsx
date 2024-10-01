@@ -17,6 +17,7 @@ const Services = lazy(() => import('./pages/Services'));
 const EmailVerification = lazy(() => import('./pages/EmailVerification'));
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
 const ResetPassword = lazy(() => import('./pages/ResetPassword'));
+const Blog = lazy(() => import('./pages/Blog'));
 
 
 
@@ -64,7 +65,8 @@ function App() {
         </RedirectAuthenticatedUser>} />
         <Route path="/forgot-password" element={<RedirectAuthenticatedUser><ForgotPassword /></RedirectAuthenticatedUser>} />
         <Route path="/reset-password/:token" element={<RedirectAuthenticatedUser><ResetPassword /></RedirectAuthenticatedUser>} />
-        <Route path="/verify-email" element={<EmailVerification />} />
+        <Route path="/verify-email" element={<RedirectAuthenticatedUser><EmailVerification /></RedirectAuthenticatedUser>} />
+        <Route path='/blogs' element={<Blog />} />
       </Routes>
     </Suspense>
     <Toaster />
