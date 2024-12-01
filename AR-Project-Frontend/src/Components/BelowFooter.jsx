@@ -1,4 +1,5 @@
 import { Fingerprint } from "lucide-react";
+import footImg from "/src/assets/foot.jpg";
 
 var currentDate = new Date();
 
@@ -23,12 +24,10 @@ const BelowFooter = () => {
           <Fingerprint className="w-12 h-12 hover:text-red-600" />
           {/* Add update/Comming soon kind of update here */}
         </div>
-        
-
       </div>
       <div className="flex justify-center items-center bg-white">
-          <img src="/src/assets/foot.jpg" alt="foot" className="max-w-full" />
-        </div>
+        <img src={footImg} alt="foot" className="max-w-full" />
+      </div>
     </>
   );
 };
