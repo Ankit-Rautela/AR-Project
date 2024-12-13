@@ -9,6 +9,7 @@ import ProfileBanner from "./ProfileBanner";
 import Intro from "../pages/Intro";
 import Cursor from "./Cursor";
 import RegistrationPopUp from "./RegistrationPopUp";
+import Certifications from "../pages/Certifications"
 
 const Home = () => {
 
@@ -26,6 +27,7 @@ const Home = () => {
         setShowForm(false);
       }} />)}
       <Intro />
+      <Certifications />
       <Footer />
       <BelowFooter />
       <Cursor />

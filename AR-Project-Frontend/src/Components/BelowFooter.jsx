@@ -1,22 +1,21 @@
 import { Fingerprint } from "lucide-react";
 import footImg from "/src/assets/foot.jpg";
 
-var currentDate = new Date();
-
 const BelowFooter = () => {
   return (
     <>
       <div className="w-full p-6 text-center bg-white ">
         <div>
-          <h5 className="mb-2 text-3xl font-bold text-gray-900 ">
-            Made with ❤️ -Ankit Rautela
+          <h5 className="mb-2 text-1xl font-bold text-gray-900 ">
+            Made with ❤️ in India
           </h5>
-          <p className="mb-5 text-base text-gray-500 sm:text-lg ">
+          {/* <p className="mb-5 text-base text-gray-500 sm:text-lg ">
             Let's connect! Reach out to me and let's bring your ideas to life
             together.
-          </p>
+          </p> */}
           <div>
-            {currentDate.getFullYear()} &copy; copyright issues.
+            {/* {currentDate.getFullYear()}  */}
+            No &copy; copyright issues.
             <p> Feel free to copy. If you need any help, ping me !</p>
           </div>
         </div>

@@ -12,7 +12,7 @@ const Footer = () => {
           </div>
           <div className="min-h-[100px] rounded sm:col-span-12 flex flex-col "> 
             <div className="flex justify-center font-extrabold my-4">
-              <p>Follow me</p>
+              <p>Let's Connect</p>
             </div>
             <div className="flex justify-center gap-10 my-4 ">
               <a href="https://www.linkedin.com/in/ankit-rautela/" target="_blank" rel="noopener noreferrer">
