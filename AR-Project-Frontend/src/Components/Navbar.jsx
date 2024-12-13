@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="grid gap-4 min-h-[100px] sm:grid-cols-12 shadow-xl sm:sticky top-0 bg-white">
+      <div className="grid gap-4 min-h-[100px] sm:grid-cols-12  sm:sticky top-0 bg-white">
         <div className="min-h-[100px] rounded bg-white sm:col-span-2">
           <img className="w-20 h-20 mx-auto my-4" src={profilePic} alt="logo" />
         </div>
