@@ -1,4 +1,3 @@
-import React from "react";
 import Frontlogo from "../assets/FrontLogo.png";
 import { Linkedin, Github, Twitter } from "lucide-react";
 const ProfileBanner = () => {
@@ -12,7 +11,7 @@ const ProfileBanner = () => {
             <p>I am a Software Engineer.</p>
           </div>
           <div className="text-xl mt-1 ml-2 p-0">
-            <p> Currently working at Saint-Gobain.</p>
+            <p> Currently working at <a className="text-blue-800" target="_blank" href="https://www.saint-gobain.co.in/indec">Saint-Gobain</a>.</p>
           </div>
           <div className="flex justify-center gap-10 my-10 mr-80">
             <a href="https://www.linkedin.com/in/ankit-rautela/" target="_blank" rel="noopener noreferrer">

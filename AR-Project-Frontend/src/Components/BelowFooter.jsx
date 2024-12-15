@@ -1,5 +1,6 @@
 import { Fingerprint } from "lucide-react";
 import footImg from "/src/assets/foot.jpg";
+import sign from "/src/assets/sign.png";
 
 const BelowFooter = () => {
   return (
@@ -9,19 +10,18 @@ const BelowFooter = () => {
           <h5 className="mb-2 text-1xl font-bold text-gray-900 ">
             Made with ❤️ in India
           </h5>
-          {/* <p className="mb-5 text-base text-gray-500 sm:text-lg ">
-            Let's connect! Reach out to me and let's bring your ideas to life
-            together.
-          </p> */}
           <div>
             {/* {currentDate.getFullYear()}  */}
             No &copy; copyright issues.
             <p> Feel free to copy. If you need any help, ping me !</p>
           </div>
         </div>
-        <div className="fixed bottom-12 right-12">
+        <div className="fixed bottom-6 right-12">
           <Fingerprint className="w-12 h-12 hover:text-red-600" />
           {/* Add update/Comming soon kind of update here */}
+        </div>
+        <div className="fixed bottom-6 w-18">
+          <img src={sign} alt="sign" />
         </div>
       </div>
       <div className="flex justify-center items-center bg-white">

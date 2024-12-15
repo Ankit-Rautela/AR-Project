@@ -60,5 +60,29 @@ body::-webkit-scrollbar-thumb {
   animation: spin 90s linear infinite;
 }
 
+*,*::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  display: flex;
+  justify-content: center;
+}
 
+swiper-container {
+  width: 1400px;
+  height: 400px;
+  text-align: center;
+}
+
+swiper-slide {
+  background-color: rgb(233, 229, 218);
+  color: black;
+  font-size: 16px;
+}
+
+swiper-slide:nth-child(2) {
+  background-color: rgb(233, 229, 218);
+}
